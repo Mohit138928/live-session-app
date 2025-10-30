@@ -210,55 +210,53 @@ const AdminPage = () => {
 
         {/* Session Details */}
         {session && (
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {/* Session Info Card */}
-            <div className="bg-white rounded-lg border border-gray-200 p-8">
-              <div className="flex items-start justify-between mb-6">
+            <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 lg:p-8">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 sm:mb-6 gap-3">
                 <div>
-                  <h2 className="text-2xl font-semibold text-gray-900 mb-1">
+                  <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-1">
                     Session Created Successfully
                   </h2>
-                  <p className="text-gray-600">
+                  <p className="text-sm sm:text-base text-gray-600">
                     Share the details below with your students
                   </p>
                 </div>
-                <div className="flex items-center space-x-2 bg-green-50 text-green-700 px-4 py-2 rounded-full">
+                <div className="flex items-center space-x-2 bg-green-50 text-green-700 px-4 py-2 rounded-full self-start">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                   <span className="text-sm font-medium">Active</span>
                 </div>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                     Session ID
                   </label>
-                  <div className="flex items-center space-x-2">
-                    <code className="flex-1 text-gray-900 bg-gray-50 p-4 rounded-lg border border-gray-200 font-mono text-sm">
-                      {session.unique_id}
-                    </code>
-                  </div>
+                  <code className="block text-gray-900 bg-gray-50 px-3 py-2 sm:p-4 rounded-lg border border-gray-200 font-mono text-xs sm:text-sm break-all">
+                    {session.unique_id}
+                  </code>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                     Student Access Link
                   </label>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2">
                     <input
                       type="text"
                       readOnly
                       value={session.userurl}
-                      className="flex-1 text-gray-900 bg-gray-50 p-4 rounded-lg border border-gray-200 font-mono text-sm focus:outline-none"
+                      className="flex-1 text-gray-900 bg-gray-50 px-3 py-2 sm:p-4 rounded-lg border border-gray-200 font-mono text-xs sm:text-sm focus:outline-none min-w-0"
                     />
                     <button
                       onClick={copyToClipboard}
-                      className="text-gray-700 font-medium rounded-lg border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 px-4 py-3 transition-colors flex items-center space-x-2"
+                      className="text-gray-700 font-medium rounded-lg border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 px-4 py-2 sm:py-3 transition-colors flex items-center justify-center space-x-2 whitespace-nowrap"
                     >
                       {copied ? (
                         <>
                           <svg
-                            className="w-5 h-5"
+                            className="w-4 h-4 sm:w-5 sm:h-5"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -270,12 +268,12 @@ const AdminPage = () => {
                               d="M5 13l4 4L19 7"
                             />
                           </svg>
-                          <span>Copied</span>
+                          <span className="text-sm">Copied</span>
                         </>
                       ) : (
                         <>
                           <svg
-                            className="w-5 h-5"
+                            className="w-4 h-4 sm:w-5 sm:h-5"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -287,12 +285,12 @@ const AdminPage = () => {
                               d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
                             />
                           </svg>
-                          <span>Copy</span>
+                          <span className="text-sm">Copy</span>
                         </>
                       )}
                     </button>
                   </div>
-                  <p className="text-sm text-gray-500 mt-2">
+                  <p className="text-xs sm:text-sm text-gray-500 mt-2">
                     Share this link with students to join the session
                   </p>
                 </div>
@@ -300,8 +298,8 @@ const AdminPage = () => {
             </div>
 
             {/* Video Player */}
-            <div className="bg-white rounded-lg border border-gray-200 p-8">
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">
+            <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 lg:p-8">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4 sm:mb-6">
                 Live Session Video
               </h3>
               <VideoPlayer videoUrl={sampleVideoUrl} />

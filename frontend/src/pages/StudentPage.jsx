@@ -144,42 +144,41 @@ const StudentPage = () => {
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
         {/* Video Player */}
-        <div className="bg-white rounded-lg border border-gray-200 p-8">
-          <h3 className="text-xl font-semibold text-gray-900 mb-6">
+        <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 lg:p-8">
+          <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4 sm:mb-6">
             Session Video
           </h3>
           <VideoPlayer videoUrl={sampleVideoUrl} />
         </div>
 
         {/* Session Info */}
-        <div className="bg-white rounded-lg border border-gray-200 p-6 mb-6">
+        <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 mt-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">
             Session Information
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-            {/* Session ID */}
+          <div className="space-y-4">
+            {/* Session ID - Compact */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                 Session ID
               </label>
-              <code className="block bg-gray-50 px-4 py-3 rounded-lg border border-gray-200 font-mono text-sm text-gray-900">
+              <code className="block bg-gray-50 px-3 py-2 rounded-lg border border-gray-200 font-mono text-xs sm:text-sm text-gray-900 break-all">
                 {session.unique_id}
               </code>
             </div>
 
-            {/* Join URL */}
-            <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+            {/* Join URL - Compact with Copy Button */}
+            <div>
+              <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
                 Join URL
               </label>
-              <div className="flex items-center space-x-2">
-                <div className="flex items-center flex-1 space-x-2 bg-gray-50 px-4 py-3 rounded-lg border border-gray-200">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                <div className="flex items-center flex-1 space-x-2 bg-gray-50 px-3 py-2 rounded-lg border border-gray-200 min-w-0">
                   <svg
-                    className="w-5 h-5 text-gray-600 flex-shrink-0"
+                    className="w-4 h-4 text-gray-600 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -191,18 +190,18 @@ const StudentPage = () => {
                       d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
                     />
                   </svg>
-                  <span className="text-gray-900 font-mono text-sm break-all">
+                  <span className="text-gray-900 font-mono text-xs break-all overflow-hidden">
                     {session.userurl}
                   </span>
                 </div>
                 <button
                   onClick={copyToClipboard}
-                  className="text-gray-700 font-medium rounded-lg border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 px-4 py-3 transition-colors flex items-center space-x-2"
+                  className="text-gray-700 font-medium rounded-lg border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 px-4 py-2 transition-colors flex items-center justify-center space-x-2 whitespace-nowrap"
                 >
                   {copied ? (
                     <>
                       <svg
-                        className="w-5 h-5"
+                        className="w-4 h-4"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -214,12 +213,12 @@ const StudentPage = () => {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span>Copied</span>
+                      <span className="text-sm">Copied</span>
                     </>
                   ) : (
                     <>
                       <svg
-                        className="w-5 h-5"
+                        className="w-4 h-4"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -231,14 +230,14 @@ const StudentPage = () => {
                           d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
                         />
                       </svg>
-                      <span>Copy</span>
+                      <span className="text-sm">Copy</span>
                     </>
                   )}
                 </button>
               </div>
-              <div>
-                <p className="text-xs text-gray-600">Copy this url and shared with the <strong>Student</strong></p>
-            </div>
+              <p className="text-xs text-gray-500 mt-2">
+                Copy this url and share with <strong>Students</strong>
+              </p>
             </div>
           </div>
         </div>
