@@ -10,6 +10,9 @@ const AdminPage = () => {
   const [error, setError] = useState(null);
   const [copied, setCopied] = useState(false);
 
+  // API Base URL from environment variable
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
   // Sample video URL - you can replace this with any direct video URL
   // For testing, using a sample MP4 video (you can replace with your own video)
   const sampleVideoUrl =
@@ -20,9 +23,7 @@ const AdminPage = () => {
     setError(null);
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/start-session"
-      );
+      const response = await axios.post(`${API_URL}/api/start-session`);
 
       if (response.data.success) {
         setSession(response.data.data);

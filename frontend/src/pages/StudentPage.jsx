@@ -10,6 +10,9 @@ const StudentPage = () => {
   const [error, setError] = useState(null);
   const [copied, setCopied] = useState(false);
 
+  // API Base URL from environment variable
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
   // Sample video URL - should match the admin's video
   // For testing, using a sample MP4 video (you can replace with your own video)
   const sampleVideoUrl =
@@ -18,9 +21,7 @@ const StudentPage = () => {
   useEffect(() => {
     const fetchSession = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/api/session/${unique_id}`
-        );
+        const response = await axios.get(`${API_URL}/api/session/${unique_id}`);
 
         if (response.data.success) {
           setSession(response.data.data);
@@ -38,7 +39,7 @@ const StudentPage = () => {
     if (unique_id) {
       fetchSession();
     }
-  }, [unique_id]);
+  }, [unique_id, API_URL]);
 
   const copyToClipboard = () => {
     if (session?.userurl) {
