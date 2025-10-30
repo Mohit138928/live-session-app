@@ -4,8 +4,9 @@ import Session from "../models/Session.js";
 // Create a new session
 export const startSession = async (req, res) => {
   try {
+    const userURL_API = process.env.USER_URL_API || "http://localhost:5173";
     const uniqueId = uuidv4();
-    const userUrl = `http://localhost:5173/session/${uniqueId}`;
+    const userUrl = `${userURL_API}/session/${uniqueId}`;
 
     const session = await Session.create({
       type: "admin",
